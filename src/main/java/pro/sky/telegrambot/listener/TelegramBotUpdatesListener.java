@@ -52,11 +52,11 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                 String dateStr = matcher.group(1);
                 LocalDateTime execDate = LocalDateTime.parse(dateStr, FORMATTER);
                 String message = matcher.group(2);
-                NotificationTask tusk =  new NotificationTask();
-                tusk.setChatId(chatId);
-                tusk.setMessage(message);
-                tusk.setExecDate(execDate);
-                repository.save(tusk);
+                NotificationTask task=  new NotificationTask();
+                task.setChatId(chatId);
+                task.setMessage(message);
+                task.setExecDate(execDate);
+                repository.save(task);
                 sendMessage(chatId, "Событие сохранено на дату " + execDate);
             }
 
